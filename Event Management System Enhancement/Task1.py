@@ -18,8 +18,11 @@ while True:
         elif action == 'edit':
             event.display_participant_count()
             selected_event = input('Enter event name that needs the attendace updated: ').lower()
-            new_participant_count = int(input('Enter new participant count: '))
-            event.update_participant_count(selected_event, new_participant_count)
+            if selected_event in event.event:
+                new_participant_count = int(input('Enter new participant count: '))
+                event.update_participant_count(selected_event, new_participant_count)
+            else:
+                print('This event does not exist.')
         elif action == 'display':
             event.display_participant_count()
     except Exception as e:
